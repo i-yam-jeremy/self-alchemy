@@ -1,6 +1,7 @@
 import 'phaser';
 
 import {Button} from './game-frame/button';
+import {TextField} from './game-frame/text-field';
 
 var config = {
     type: Phaser.AUTO,
@@ -20,6 +21,7 @@ function preload() {
 	this.load.image('transmute-button-earth', 'assets/game-frame/transmute-buttons/earth.png');
 	this.load.image('transmute-button-fire', 'assets/game-frame/transmute-buttons/fire.png');
 	this.load.image('transmute-button-ether', 'assets/game-frame/transmute-buttons/ether.png');
+	TextField.loadAssets(this);
 }
 
 function create() {
@@ -39,4 +41,6 @@ function create() {
 	etherButton.on('down', () => {
 		console.log('Ether');
 	});
+
+	let textField = new TextField(this, 200, 100, 100);
 }
