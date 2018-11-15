@@ -1,0 +1,29 @@
+{
+  "name": "self-alchemy",
+  "version": "0.0.1",
+  "description": "A game in which you must transmute yourself into different elements in order to explore and survive",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "npm run build && webpack-dev-server --port=8000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i-yam-jeremy/self-alchemy.git"
+  },
+  "author": "Jeremy Berchtold (https://i-yam-jeremy.github.io)",
+  "license": "MIT",
+  "licenseUrl": "http://www.opensource.org/licenses/mit-license.php",
+  "bugs": {
+    "url": "https://github.com/i-yam-jeremy/self-alchemy/issues"
+  },
+  "homepage": "https://github.com/i-yam-jeremy/self-alchemy#readme",
+  "devDependencies": {
+    "webpack-dev-server": "^2.11.0",
+    "webpack": "^3.4.1",
+    "raw-loader": "^0.5.1"
+  },
+  "dependencies": {
+    "phaser": "^3.3.0"
+  }
+}
