@@ -1,6 +1,6 @@
 import 'phaser';
 
-import {Button} from './game-frame/button';
+import {button} from './game-frame/button';
 import {TextField} from './game-frame/text-field';
 
 var config = {
@@ -25,20 +25,20 @@ function preload() {
 }
 
 function create() {
-	let waterButton = new Button(this, 'transmute-button-water', 800-32-64*3, 600-32);
-	waterButton.on('down', () => {
+	let waterButton = button(this, 'transmute-button-water', 'a', 800-64*4, 600-64);
+	waterButton.on('pointerdown', () => {
 		console.log('Water');
 	});
-	let earthButton = new Button(this, 'transmute-button-earth', 800-32-64*2, 600-32);
-	earthButton.on('down', () => {
+	let earthButton = button(this, 'transmute-button-earth', 's', 800-64*3, 600-64);
+	earthButton.on('pointerdown', () => {
 		console.log('Earth');
 	});
-	let fireButton = new Button(this, 'transmute-button-fire', 800-32-64*1, 600-32);
-	fireButton.on('down', () => {
+	let fireButton = button(this, 'transmute-button-fire', 'd', 800-64*2, 600-64);
+	fireButton.on('pointerdown', () => {
 		console.log('Fire');
 	});
-	let etherButton = new Button(this, 'transmute-button-ether', 800-32, 600-32);
-	etherButton.on('down', () => {
+	let etherButton = button(this, 'transmute-button-ether', 'f', 800-64*1, 600-64);
+	etherButton.on('pointerdown', () => {
 		console.log('Ether');
 	});
 

@@ -1,5 +1,77 @@
+import {UIElement} from './ui-element';
 
-class Button {
+class ButtonSpriteSet {
+	constructor(element, game, data) {
+		let buttonSprite = game.add.image(0, 0, data.spriteName).setOrigin(0, 0);
+		this._sprites = [buttonSprite];
+	}
+
+	getSprites() {
+		return this._sprites;
+	}
+
+	getBounds() {
+		let buttonSprite = this._sprites[0];
+		return {
+			x: buttonSprite.x,
+			y: buttonSprite.y,
+			width: buttonSprite.width,
+			height: buttonSprite.height
+		};
+	}
+}
+
+class ButtonKeyboardHandler {
+	
+	constructor(element, game, data) {
+		this._keyBinding = data.keyBinding;
+		this._element = element;
+	}
+
+	down(key) {
+		let keyValue;
+		if (typeof this._keyBinding == 'string') {
+			keyValue = key.key;
+		}
+		else {
+			key.keyCode;
+		}
+
+		if (keyValue == this._keyBinding) {
+			this._element.simulateClick();
+		}
+	}
+
+	up(key) {
+
+	}
+
+	//TODO
+}
+
+class EmptyPointerHandler {
+	constructor(element, game, data) {}
+	down(p) {}
+	up(p) {}
+	enter(p) {}
+	exit(p) {}
+}
+
+
+function button(game, spriteName, keyBinding, x, y) {
+	return new UIElement(game, {
+		sprites: ButtonSpriteSet,
+		keyboardHandler: ButtonKeyboardHandler,
+		pointerHandler: EmptyPointerHandler
+	}, {
+		spriteName: spriteName,
+		keyBinding: keyBinding
+	}, x, y);
+}
+
+export { button };
+
+/*class Button {
 
 	constructor(game, spriteName, x, y) {
 		this._sprite = game.add.image(x, y, spriteName);
@@ -55,6 +127,4 @@ class Button {
 		}
 	}
 
-}
-
-export { Button };
+}*/
