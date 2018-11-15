@@ -1,8 +1,8 @@
 
 class Button {
 
-	constructor(phaser, spriteName, x, y) {
-		this._sprite = phaser.add.image(x, y, spriteName);
+	constructor(game, spriteName, x, y) {
+		this._sprite = game.add.image(x, y, spriteName);
 		this.eventCallbacks = {
 			'down': []
 		};
@@ -14,7 +14,7 @@ class Button {
 			this._updateTint();
 			this.eventCallbacks['down'].forEach(f => f());
 		});
-		phaser.input.on('pointermove', (p) => {
+		game.input.on('pointermove', (p) => {
 			if (p.x > this._sprite.x - this._sprite.width/2 &&
 			    p.x < this._sprite.x + this._sprite.width/2 &&
 			    p.y > this._sprite.y - this._sprite.height/2 &&
@@ -28,7 +28,7 @@ class Button {
 				this._updateTint();
 			}
 		});
-		phaser.input.on('pointerup', (p) => {
+		game.input.on('pointerup', (p) => {
 			this._isPointerDown = false;
 			this._updateTint();
 		});
