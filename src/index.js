@@ -21,10 +21,23 @@ function preload() {
 	this.load.image('transmute-button-earth', 'assets/game-frame/transmute-buttons/earth.png');
 	this.load.image('transmute-button-fire', 'assets/game-frame/transmute-buttons/fire.png');
 	this.load.image('transmute-button-ether', 'assets/game-frame/transmute-buttons/ether.png');
+	this.load.spritesheet('ether-blob', 'assets/matter-blobs/ether-blob.png', {frameWidth: 64, frameHeight: 64});
 	TextField.loadAssets(this);
 }
 
 function create() {
+
+	let etherBlob = this.add.sprite(400, 300, 'ether-blob');
+
+	this.anims.create({
+		key: 'ether-blob-squish',
+		frames: this.anims.generateFrameNumbers('ether-blob', {start: 0, end: 12}),
+		frameRate: 12,
+		repeat: -1
+	});
+
+	etherBlob.anims.play('ether-blob-squish', true);
+
 	let waterButton = button(this, 'transmute-button-water', 'a', 800-64*4, 600-64);
 	waterButton.on('pointerdown', () => {
 		console.log('Water');
